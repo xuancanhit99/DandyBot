@@ -31,10 +31,48 @@ def script(check, x, y):
         # Xuong de khong bi dung yen(Tac dong nhan vat)
         return 'down'
     elif check('level') == 3:
-        # Debug
-        print(str(x) + " " + str(y) + "\n")
-        if (check('player', x+1, y) != check('wall', x, y)):
-            return 'right'
+        if not (check("wall", x, y - 1)) and check("wall", x - 1, y):
+            return "up"
+        if not (check("wall", x + 1, y)) and check("wall", x, y - 1):
+            return "right"
+        if not (check("wall", x, y + 1)) and check("wall", x + 1, y):
+            return "down"
+        if not (check("wall", x - 1, y)) and check("wall", x, y + 1):
+            return "left"
+        if check("wall", x - 1, y - 1):
+            return "up"
+        if check("wall", x - 1, y + 1):
+            return "left"
+        if check("wall", x + 1, y - 1):
+            return "right"
+        if check("wall", x + 1, y + 1):
+            return "down"
+    elif check('level') == 4:
+        if check("gold", x, y):
+            return "take"
+        if (x == 23 and y == 8):
+            return "left"
+        if (x == 22 and y == 9):
+            return "right"
+        if (x == 4 and y == 14):
+            return "right"
+        if not (check("wall", x, y - 1)) and check("wall", x - 1, y):
+            return "up"
+        if not (check("wall", x + 1, y)) and check("wall", x, y - 1):
+            return "right"
+        if not (check("wall", x, y + 1)) and check("wall", x + 1, y):
+            return "down"
+        if not (check("wall", x - 1, y)) and check("wall", x, y + 1):
+            return "left"
+        if check("wall", x - 1, y - 1):
+            return "up"
+        if check("wall", x - 1, y + 1):
+            return "left"
+        if check("wall", x + 1, y - 1):
+            return "right"
+        if check("wall", x + 1, y + 1):
+            return "down"
+    return "pass"
 
 
 
