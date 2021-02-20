@@ -73,6 +73,3 @@ def script(check, x, y):
         if check("wall", x + 1, y + 1):
             return "down"
     return "pass"
-
-
-
